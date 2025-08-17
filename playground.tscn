@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djrssjohkmquy"]
+[gd_scene load_steps=12 format=3 uid="uid://djrssjohkmquy"]
 
 [ext_resource type="Script" uid="uid://vdeppey817xh" path="res://script/level.gd" id="1_o00ia"]
 [ext_resource type="PackedScene" uid="uid://ho52w4gv5n1h" path="res://TileMaps/Grass-01.tscn" id="2_wt17y"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b1yns0yku25s" path="res://Enemies/Slime/Slime.tscn" id="4_is3ju"]
 [ext_resource type="PackedScene" uid="uid://hihmse7q3yap" path="res://Levels/PlayerSpawn.tscn" id="4_o00ia"]
 [ext_resource type="PackedScene" uid="uid://pifwg7fnma7o" path="res://Levels/LevelTransition.tscn" id="6_4bqqs"]
+[ext_resource type="PackedScene" uid="uid://b7nco5t225ec5" path="res://Items/item_pickup/item_pickup.tscn" id="7_h1jm5"]
+[ext_resource type="Resource" uid="uid://b3ggov3pywsw0" path="res://Items/gem.tres" id="8_pio1y"]
+[ext_resource type="Resource" uid="uid://dalawdv30jtfh" path="res://Items/potion.tres" id="9_te8jg"]
+[ext_resource type="Resource" uid="uid://d1d5twu0ugxa6" path="res://Items/stone.tres" id="10_yjl7g"]
+[ext_resource type="Resource" uid="uid://dcd0m12p2epeo" path="res://Items/apple.tres" id="11_pio1y"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -35,3 +40,20 @@ position = Vector2(-111, -46)
 [node name="LevelTransition" parent="." instance=ExtResource("6_4bqqs")]
 position = Vector2(213, -33)
 level = "uid://m6b8me6im002"
+target_spawner = "default"
+
+[node name="ItemPickup" parent="." instance=ExtResource("7_h1jm5")]
+position = Vector2(-218, -13)
+item_data = ExtResource("8_pio1y")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("7_h1jm5")]
+position = Vector2(-221, 62)
+item_data = ExtResource("9_te8jg")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("7_h1jm5")]
+position = Vector2(-289, 12)
+item_data = ExtResource("10_yjl7g")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("7_h1jm5")]
+position = Vector2(-269, 49)
+item_data = ExtResource("11_pio1y")

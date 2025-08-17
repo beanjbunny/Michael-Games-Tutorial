@@ -1,7 +1,7 @@
 extends Node2D
 class_name Plant
 
-func take_damage(_damage : int):
+func take_damage(_damage : HurtBox):
 	queue_free()
 	
 func _ready():
