@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1yns0yku25s"]
+[gd_scene load_steps=38 format=3 uid="uid://b1yns0yku25s"]
 
 [ext_resource type="Texture2D" uid="uid://cjus6s0jjmbwc" path="res://Player/Sprites/Shadow.png" id="1_q8ewy"]
 [ext_resource type="Script" uid="uid://dk3hn0c3uhjgs" path="res://Enemies/Scripts/enemy.gd" id="1_wqf3w"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://bo2vb8vdql05q" path="res://Enemies/Scripts/enemy_state_stun.gd" id="9_j1ull"]
 [ext_resource type="Script" uid="uid://b6sxs4minbjgx" path="res://Enemies/Scripts/enemy_state_destroy.gd" id="10_36jae"]
 [ext_resource type="PackedScene" uid="uid://wbuoxcobaquu" path="res://General Nodes/HitBox/HitBox.tscn" id="11_5fs0k"]
+[ext_resource type="Script" uid="uid://dr37p1ibbx27y" path="res://Enemies/Scripts/drop_data.gd" id="11_mp7rs"]
+[ext_resource type="Resource" uid="uid://b3ggov3pywsw0" path="res://Items/gem.tres" id="12_ke740"]
+[ext_resource type="Resource" uid="uid://dcd0m12p2epeo" path="res://Items/apple.tres" id="13_ke740"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mnmyf"]
 radius = 5.0
@@ -641,6 +644,22 @@ _data = {
 &"walk_up": SubResource("Animation_31wsf")
 }
 
+[sub_resource type="Resource" id="Resource_ts4pi"]
+script = ExtResource("11_mp7rs")
+item = ExtResource("12_ke740")
+probability = 100.0
+min_amount = 1
+max_amount = 4
+metadata/_custom_type_script = "uid://dr37p1ibbx27y"
+
+[sub_resource type="Resource" id="Resource_2vvwu"]
+script = ExtResource("11_mp7rs")
+item = ExtResource("13_ke740")
+probability = 33.0
+min_amount = 1
+max_amount = 1
+metadata/_custom_type_script = "uid://dr37p1ibbx27y"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkpye"]
 radius = 15.0
 
@@ -750,6 +769,7 @@ next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("10_36jae")
+drops = Array[ExtResource("11_mp7rs")]([SubResource("Resource_ts4pi"), SubResource("Resource_2vvwu")])
 
 [node name="HurtBox" parent="." instance=ExtResource("7_puctb")]
 

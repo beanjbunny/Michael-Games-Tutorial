@@ -28,6 +28,7 @@ func update_player_data():
 func save_game() -> void:
 	update_player_data()
 	update_scene_path()
+	updatae_item_data()
 	var file := FileAccess.open(SAVE_PATH + "save.sav", FileAccess.WRITE)
 	var save_json = JSON.stringify(current_save)
 	file.store_line(save_json)
@@ -44,6 +45,7 @@ func load_game():
 	await LevelManager.level_load_started
 	GlobalPlayerManager.set_player_position(Vector2(current_save.player.pos_x, current_save.player.pos_y))
 	GlobalPlayerManager.set_health(current_save.player.hp, current_save.player.max_hp)
+	GlobalPlayerManager.INVENTORY_DATA.parse_save_Data(current_save.items)
 	await LevelManager.level_loaded
 	game_loaded.emit()
 	
@@ -53,3 +55,6 @@ func update_scene_path():
 		if c is Level:
 			p = c.scene_file_path
 	current_save.scene_path = p
+
+func updatae_item_data() -> void:
+	current_save.items = GlobalPlayerManager.INVENTORY_DATA.get_save_data()

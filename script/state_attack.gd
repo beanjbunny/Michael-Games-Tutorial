@@ -1,6 +1,8 @@
 extends State
 class_name State_Attack
 
+#state_attack.gd
+
 @onready var walk: State = $"../Walk"
 var attacking : bool = false
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
@@ -20,7 +22,8 @@ func enter() -> void:
 	audio.pitch_scale = randf_range(0.9, 1.1)
 	audio.play()
 	await get_tree().create_timer(0.075).timeout
-	hurt_box.monitoring = true
+	if attacking:
+		hurt_box.monitoring = true
 	
 func exit() -> void:
 	animation_player.animation_finished.disconnect(end_attack)

@@ -1,6 +1,6 @@
 @tool
 class_name ItemPickup
-extends Node2D
+extends CharacterBody2D
 
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -37,3 +37,9 @@ func item_picked_up() -> void:
 func _update_texture() -> void:
 	if item_data and sprite_2d:
 		sprite_2d.texture = item_data.texture
+		
+func _physics_process(delta: float) -> void:
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		velocity = velocity.bounce(collision_info.get_normal())
+	velocity -= velocity * delta * 4
